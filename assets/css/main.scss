@@ -354,6 +354,11 @@ body {
    글 머리말 메타 (날짜 · 읽는 시간 · 카테고리 · 태그)
    ========================================================================== */
 
+/* 글 본문 첫 h1은 제목과 중복되므로 숨김 (본문 내용은 그대로 보존) */
+.page__content > h1:first-child {
+  display: none;
+}
+
 .page__title {
   font-size: 1.95em;
   font-weight: 800;
@@ -576,6 +581,20 @@ body {
   padding: 1em 1.15em;
   font-size: 0.85em;
   box-shadow: none;
+  max-height: calc(100vh - 7em);
+  overflow-y: auto;
+
+  header .nav__title {
+    background: transparent;
+    color: #0d1117;
+    margin: 0 0 0.5em;
+    padding: 0 0 0.55em;
+    border-bottom: 1px solid $border-color;
+    font-size: 0.92em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
 
   .toc__title {
     font-size: 0.9em;
@@ -587,6 +606,17 @@ body {
   }
 
   .toc__menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+
+    ul {
+      margin: 0;
+      padding-left: 0.85em;
+      border-left: 1px solid $border-color;
+    }
+
     a {
       color: $muted-text-color;
       border: 0;
@@ -743,6 +773,15 @@ body {
     border-color: rgba(37, 99, 235, 0.5);
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
   }
+}
+
+.page__comments-title {
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.5em;
+  margin-top: 2.5em;
 }
 
 /* ==========================================================================
