@@ -3,7 +3,7 @@ layout: single
 title: "VR 상호작용"
 excerpt: "VR Interactor"    # 
 categories: [Unity, VR]
-tags: [interaction]
+tags: [Interaction]
 toc: true
 author_profile: false
 sidebar:
