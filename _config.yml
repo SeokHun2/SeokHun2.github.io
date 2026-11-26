@@ -25,6 +25,7 @@ logo                     : "/assets/images/shlogo.png"
 masthead_title           : # overrides the website title displayed in the masthead
 breadcrumbs              : true
 words_per_minute         : 200
+date_format              : "%Y.%m.%d"
 enable_copy_code_button  : true
 copyright                : "Huniverse"
 copyright_url            : "https://seokhun2.github.io"
