@@ -1,36 +1,48 @@
-# main links
+# 상단 바
 main:
-  - title: "카테고리"
+  - title: "QA"
+    url: /qa/
+    description: "테스트 전략 · 자동화 · 버그 분석"
+  - title: "Network"
+    url: /network/
+    description: "TCP/IP · 패킷 분석 · 트러블슈팅"
+  - title: "Archive"
     url: /categories/
-  - title: "태그"
+    description: "전체 글 모아보기"
+  - title: "Tags"
     url: /tags/
-  - title: "검색"
-    url: /search/
+  - title: "About"
+    url: /about/
 
-docs:  
-  - title: "Home"
+# 사이드바 / 문서형 내비게이션
+docs:
+  - title: "QA"
+    url: /qa/
     children:
-      - title: "Category"
+      - title: "테스트 전략"
+        url: /qa/#test-strategy
+      - title: "자동화 · CI"
+        url: /qa/#automation
+      - title: "버그 분석"
+        url: /qa/#bug-analysis
+  - title: "Network"
+    url: /network/
+    children:
+      - title: "TCP/IP & HTTP"
+        url: /network/#tcpip
+      - title: "패킷 분석"
+        url: /network/#packet
+      - title: "트러블슈팅"
+        url: /network/#troubleshooting
+  - title: "Archive"
+    children:
+      - title: "전체 카테고리"
         url: /categories/
-      - title: "Tag"
+      - title: "Unity · VR"
+        url: /categories/#unity
+      - title: "게임 기획"
+        url: /categories/#gamedesign
+      - title: "알고리즘 · 정보처리기사"
+        url: /categories/#algorithm
+      - title: "태그 모음"
         url: /tags/
-  - title: "공부"
-    children:
-      - title: "Unity"
-        url: /categories/unity/
-      - title: "Database"
-        url: /categories/database/
-      - title: "게임기획"
-        url: /categories/game-design/
-  - title: "일상"
-    url: /categories/daily/
-
- 
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/

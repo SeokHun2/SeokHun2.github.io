@@ -1,144 +1,136 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
+# ---------------------------------------------------------------------------
+# Huniverse · QA & Network Engineering Notes
+# Jekyll + Minimal Mistakes
+# ---------------------------------------------------------------------------
 
-# Theme Settings
-#
-# Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+# 테마 (air: 밝고 깔끔한 기본 톤 — 색/타이포는 assets/css/main.scss에서 조정)
+minimal_mistakes_skin    : "air"
 
-# theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
-# Site Settings
+# 사이트 기본 정보
 locale                   : "ko-KR"
-rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
+rtl                      : # true, false (default)
 title                    : "Huniverse"
 title_separator          : "|"
-subtitle                 : "Space note"
-name                     : "SeokHun"
-description              : "경험과 정보를 담는 스페이스"
+subtitle                 : "QA & Network Engineering"
+name                     : "Seok Hun"
+description              : "QA 자동화·테스트 전략·네트워크 전반을 기록하는 기술 블로그"
 url                      : "https://seokhun2.github.io"
-baseurl                  : "/SoekHun.github.io" # the subpath of your site, e.g. "/blog"
-repository               : "SeokHun2/SoekHun.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+# 현재 저장소는 프로젝트 페이지(SoekHun.github.io)라 하위 경로가 필요합니다.
+# 저장소를 SeokHun2.github.io 로 rename한 뒤 이 값을 "" 로 바꾸면
+# 모든 내부 링크가 자동으로 루트(https://seokhun2.github.io/) 기준으로 전환됩니다.
+baseurl                  : "/SoekHun.github.io"
+repository               : "SeokHun2/SoekHun.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/shlogo.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs              :  true
+masthead_title           : # overrides the website title displayed in the masthead
+breadcrumbs              : true
 words_per_minute         : 200
-enable_copy_code_button  : # true, false (default)
-copyright                : # "copyright" name, defaults to site.title
-copyright_url            : # "copyright" URL, defaults to site.url
+enable_copy_code_button  : true
+copyright                : "Huniverse"
+copyright_url            : "https://seokhun2.github.io"
+
 comments:
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
     shortname            : "seokhun"
   discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+    server               :
   facebook:
-    # https://developers.facebook.com/docs/plugins/comments
     appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    num_posts            :
+    colorscheme          :
   utterances:
-    theme                : # "github-light" (default), "github-dark"
-    issue_term           : # "pathname" (default)
+    theme                :
+    issue_term           :
   giscus:
-    repo_id              : # Shown during giscus setup at https://giscus.app
-    category_name        : # Full text name of the category
-    category_id          : # Shown during giscus setup at https://giscus.app
-    discussion_term      : # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled    : # '1' for enabled (default), '0' for disabled
-    theme                : # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
-    strict               : # 1 for enabled, 0 for disabled (default)
-    input_position       : # "top", "bottom" # The comment input box will be placed above or below the comments
-    emit_metadata        : # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
-    lang                 : # "en" (default)
-    lazy                 : # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
+    repo_id              :
+    category_name        :
+    category_id          :
+    discussion_term      :
+    reactions_enabled    :
+    theme                :
+    strict               :
+    input_position       :
+    emit_metadata        :
+    lang                 :
+    lazy                 :
   staticman:
-    branch               : # "master"
-    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
+    branch               :
+    endpoint             :
+
 reCaptcha:
   siteKey                :
   secret                 :
+
 atom_feed:
   path                   : # blank (default) uses feed.xml
   hide                   : # true, false (default)
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+
+# 검색 (Lunr — GitHub Pages에서 추가 플러그인 없이 동작)
+search                   : true
+search_full_content      : true
+search_provider          : "lunr"
 lunr:
-  search_within_pages    : # true, false (default)
-algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
-google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
-# SEO Related
-google_site_verification : 
+  search_within_pages    : true
+
+# SEO
+google_site_verification :
 bing_site_verification   :
 naver_site_verification  : 3083d8597bb7b612aec045d6cd67bfdb4068bcf6
 yandex_site_verification :
 baidu_site_verification  :
 
-# Social Sharing
+# SNS 공유/메타
 twitter:
   username               :
 facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
+og_image                 :
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
+  type                   : Person
+  name                   :
   links: # An array of links to social media profiles
+    - "https://github.com/SeokHun2"
 
 # Analytics
 analytics:
-  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : "google-gtag"
   google:
     tracking_id          : "G-PZ96581PGH"
-    anonymize_ip         : false # true, false (default)
+    anonymize_ip         : false
 
-
-# Site Author
+# 작성자 정보
 author:
   name             : "Seok Hun"
   avatar           : "/images/profileScene.jpg"
-  bio              : "경험과 정보를 담는 스페이스"
-  #location         : "South Korea"
-  #email            : "jsr_bile@naver.com"
+  bio              : "QA · 네트워크 엔지니어링을 기록합니다"
   links:
-    - label: "Youtube"
-      icon: "fa-brands fa-youtube"
-      url: "https://youtube.com/channel/UCefvo-jzz86YXTLWRl0JDGA?si=jV2ndav6_ehJaZsF"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/SeokHun2"
     - label: "Notion"
       icon: "fa-solid fa-n"
       url: "http://hun2.notion.site"
-      links:  
+    - label: "Youtube"
+      icon: "fa-brands fa-youtube"
+      url: "https://youtube.com/channel/UCefvo-jzz86YXTLWRl0JDGA?si=jV2ndav6_ehJaZsF"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/skkhun.2"
 
-
-# Site Footer
+# 푸터
 footer:
-  
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/SeokHun2"
+    - label: "RSS"
+      icon: "fas fa-fw fa-rss-square"
+      url: "/feed.xml"
 
-# Reading Files
+# 파일 처리
 include:
   - .htaccess
   - _pages
@@ -167,24 +159,24 @@ exclude:
   - Rakefile
   - README
   - tmp
-  - /docs # ignore Minimal Mistakes /docs
-  - /test # ignore Minimal Mistakes /test
+  - .travis.yml
+  - /docs # Minimal Mistakes 테마 문서 원본
+  - /test # Minimal Mistakes 테스트 사이트
+  - screenshot.png
+  - screenshot-layouts.png
 keep_files:
   - .git
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
-# Conversion
+# 마크다운 변환
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
-
-# Markdown Processing
 kramdown:
   input: GFM
   hard_wrap: false
@@ -195,45 +187,20 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
-# Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed
 
-
-# Outputting
+# 출력 & URL
+# /:categories/:title/ — QA 글이면 /QA/글제목/, Network 글이면 /Network/글제목/
 permalink: /:categories/:title/
 timezone: Asia/Seoul
 
+# 페이지네이션 (jekyll-paginate)
+paginate: 8
+paginate_path: "/page:num/"
 
-# Pagination with jekyll-paginate
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-
-# Pagination with jekyll-paginate-v2
-# See https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
-#   for configuration details
-pagination:
-  # Set enabled to true to use paginate v2
-  # enabled: true
-  debug: false
-  collection: 'posts'
-  per_page: 10
-  permalink: '/page/:num/'
-  title: ':title - page :num'
-  limit: 0
-  sort_field: 'date'
-  sort_reverse: true
-  category: 'posts'
-  tag: ''
-  locale: ''
-  trail:
-    before: 2
-    after: 2
-
-
-# Plugins (previously gems:)
+# 플러그인 (GitHub Pages 허용 목록)
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
@@ -241,7 +208,6 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
-# mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
@@ -249,55 +215,41 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
 
-
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path>/my-awesome-category/index.html ~> path: /
+# 아카이브
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-   - categories
-   - tags
-  layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
 
-
-# HTML Compression
-# - https://jch.penibelst.de/
+# HTML 압축
 compress_html:
   clippings: all
   ignore:
     envs: development
 
-
-# Defaults
+# 기본값
 defaults:
-  # _posts
+  # 글
   - scope:
       path: ""
       type: posts
     values:
       layout: single
       author_profile: true
+      toc: true
+      toc_sticky: true
+      toc_label: "목차"
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
       show_date: true
+  # 페이지
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true

@@ -3,7 +3,7 @@ layout: single
 title:  "Unity와 데이터베이스 연동하기"
 excerpt: "Unity와 데이터베이스 연동하기에 대해 알아보자"
 categories: 데이터베이스
-tag: [Unity, MySQL, DB연동]
+tags: [Unity, MySQL, DB연동]
 toc: true # 오른쪽 UI 목차 기능
 author_profile: false # 좌측 프로필 표시 기능
 sidebar:

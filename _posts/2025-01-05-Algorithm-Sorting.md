@@ -3,7 +3,7 @@ layout: single
 title: "삽입정렬, 선택정렬, 버블정렬"
 excerpt: "기본적인 데이터 정렬 알고리즘 정리" 
 categories: [Algorithm]
-tag: [Insertion Sort, Selection Sort, Bubble Sort]
+tags: [Insertion Sort, Selection Sort, Bubble Sort]
 toc: true
 author_profile: false
 sidebar:

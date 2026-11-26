@@ -4,7 +4,7 @@ layout: single
 title: "시스템 기획의 핵심 접근법"  
 excerpt: "시스템 기획에서 필수적인 접근법과 사례를 알아봅니다."  
 categories: [GameDesign, Planning]  
-tag: [SystemDesign, 기획]  
+tags: [SystemDesign, 기획]  
 toc: true  
 author_profile: false  
 sidebar:  

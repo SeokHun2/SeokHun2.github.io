@@ -3,7 +3,7 @@ layout: single
 title: "시스템 기획서의 정의와 역할"
 excerpt: "시스템 기획서의 개념과 구성 요소를 알아보고, 효과적인 작성 방법을 제시합니다."
 categories: [Game, Planning]
-tag: [System Design, Documentation]
+tags: [System Design, Documentation]
 toc: true
 author_profile: false
 sidebar:

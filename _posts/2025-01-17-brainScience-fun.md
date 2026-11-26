@@ -1,13 +1,13 @@
 ---
 layout: single
-title: “재미의 본질과 게임에서의 의미 탐색”
+title: "재미의 본질과 게임에서의 의미 탐색"
 excerpt: “뇌가 의미를 찾고 학습해가는 과정을 통해 재미를 느끼는 이유와, 그 과정이 어떻게 게임 속 경험으로 이어지는지를 분석합니다.”
 categories: [Game, BrainScience]
-tag: [게임이론, 재미, 뇌과학]
+tags: [게임이론, 재미, 뇌과학]
 toc: true
 author_profile: false
 sidebar:
-nav: “docs”
+  nav: "docs"
 
 search: true
 ---

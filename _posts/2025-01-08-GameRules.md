@@ -3,7 +3,7 @@ layout: single
 title: "규칙 설계"
 excerpt: "게임 규칙의 정의, 역할, 설계 구성 요소 및 주요 사례를 알아봅니다."
 categories: [GameDesign, Planning]
-tag: [SystemDesign, GameRules]
+tags: [SystemDesign, GameRules]
 toc: true
 author_profile: false
 sidebar:

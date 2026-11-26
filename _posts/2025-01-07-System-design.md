@@ -3,7 +3,7 @@ layout: single
 title: "시스템 기획"
 excerpt: "시스템 기획의 정의, 역할, 중요성과 사례를 알아봅니다."
 categories: [GameDesign, Planning]
-tag: [SystemDesign, GamePlanning]
+tags: [SystemDesign, GamePlanning]
 toc: true
 author_profile: false
 sidebar:
