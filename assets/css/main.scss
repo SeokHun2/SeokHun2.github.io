@@ -507,6 +507,58 @@ body {
 }
 
 /* 카테고리 · 태그 아카이브 */
+.taxonomy__index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  list-style: none;
+  margin: 0 0 2.2em;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.35em 0.75em;
+    border: 1px solid $border-color;
+    border-radius: 999px;
+    background: #fff;
+    color: #3d444d;
+    font-size: 0.86em;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  a:hover {
+    border-color: rgba(37, 99, 235, 0.35);
+    color: $primary-color;
+    background: rgba(37, 99, 235, 0.05);
+  }
+
+  .taxonomy__count {
+    font-size: 0.85em;
+    color: $muted-text-color;
+  }
+}
+
+.back-to-top {
+  display: inline-block;
+  margin-top: 0.4em;
+  font-size: 0.8em;
+  color: $muted-text-color;
+  border: 0;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  color: $primary-color;
+}
+
 .taxonomy__section {
   margin-bottom: 2.2em;
 }
