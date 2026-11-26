@@ -135,9 +135,9 @@ search: true
 - **모든 게임 기획자에게 필수 역량**으로, 콘텐츠와 연계된 설계를 통해 더 완성도 높은 게임을 제작.
 - **구체적이고 논리적인 기획서 작성이 중요**하며, 유저와 개발자 모두를 만족시키는 설계가 요구됨.
 
-![시스템 설계 예제 1](/images/2025-GameDesign/System-design0.png)
-![시스템 설계 예제 2](/images/2025-GameDesign/System-design1.png)
-![시스템 설계 예제 3](/images/2025-GameDesign/System-design2.png)
-![시스템 설계 예제 4](/images/2025-GameDesign/System-design3.png)
+![시스템 설계 예제 1]({{ site.baseurl }}/images/2025-GameDesign/System-design0.png)
+![시스템 설계 예제 2]({{ site.baseurl }}/images/2025-GameDesign/System-design1.png)
+![시스템 설계 예제 3]({{ site.baseurl }}/images/2025-GameDesign/System-design2.png)
+![시스템 설계 예제 4]({{ site.baseurl }}/images/2025-GameDesign/System-design3.png)
 
 
