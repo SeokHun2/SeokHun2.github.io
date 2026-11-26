@@ -125,11 +125,14 @@ author:
 footer:
   links:
     - label: "GitHub"
-      icon: "fab fa-fw fa-github"
+      icon: "fa-brands fa-fw fa-github"
       url: "https://github.com/SeokHun2"
-    - label: "RSS"
-      icon: "fas fa-fw fa-rss-square"
-      url: "/feed.xml"
+    - label: "Notion"
+      icon: "fa-solid fa-fw fa-n"
+      url: "http://hun2.notion.site"
+    - label: "YouTube"
+      icon: "fa-brands fa-fw fa-youtube"
+      url: "https://youtube.com/channel/UCefvo-jzz86YXTLWRl0JDGA"
 
 # 파일 처리
 include:
