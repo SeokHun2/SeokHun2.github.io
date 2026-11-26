@@ -15,11 +15,9 @@ subtitle                 : "QA & Network Engineering"
 name                     : "Seok Hun"
 description              : "QA 자동화·테스트 전략·네트워크 전반을 기록하는 기술 블로그"
 url                      : "https://seokhun2.github.io"
-# 현재 저장소는 프로젝트 페이지(SoekHun.github.io)라 하위 경로가 필요합니다.
-# 저장소를 SeokHun2.github.io 로 rename한 뒤 이 값을 "" 로 바꾸면
-# 모든 내부 링크가 자동으로 루트(https://seokhun2.github.io/) 기준으로 전환됩니다.
-baseurl                  : "/SoekHun.github.io"
-repository               : "SeokHun2/SoekHun.github.io"
+# 사용자 페이지(SeokHun2.github.io) 저장소이므로 루트 URL(https://seokhun2.github.io/)에서 서비스됩니다.
+baseurl                  : ""
+repository               : "SeokHun2/SeokHun2.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/shlogo.png"
 masthead_title           : # overrides the website title displayed in the masthead

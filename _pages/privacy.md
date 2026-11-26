@@ -23,7 +23,7 @@ last_modified_at: 2026-11-26
 ## 1. 운영자 및 적용 범위 {#scope}
 
 - 운영자: Seok Hun (개인 기술 블로그 "Huniverse")
-- 사이트 주소: [https://seokhun2.github.io/SoekHun.github.io/](https://seokhun2.github.io/SoekHun.github.io/)
+- 사이트 주소: [https://seokhun2.github.io/](https://seokhun2.github.io/)
 - 적용 범위: 이 블로그의 모든 글과 페이지에 적용됩니다.
 - 시행일: 2026년 11월 26일
 
