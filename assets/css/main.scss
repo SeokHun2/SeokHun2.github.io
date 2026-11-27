@@ -423,6 +423,7 @@ pre .clipboard-copy-button:focus {
 div.highlighter-rouge pre,
 figure.highlight pre {
   scrollbar-width: thin;
+  scrollbar-color: #3a424c #161b22;
 
   &::-webkit-scrollbar {
     height: 8px;
