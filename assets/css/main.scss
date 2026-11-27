@@ -419,6 +419,40 @@ pre .clipboard-copy-button:focus {
   opacity: 1;
 }
 
+/* 코드 블록 가로 스크롤바를 어두운 배경에 맞춰 얇게 */
+div.highlighter-rouge pre,
+figure.highlight pre {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #3a424c;
+    border-radius: 999px;
+  }
+}
+
+/* 마우스가 있는 환경에서는 복사 버튼이 코드 첫 줄을 가리지 않도록
+   마우스를 올렸을 때만 보입니다 (터치 환경은 항상 표시). */
+@media (hover: hover) and (pointer: fine) {
+  div.highlighter-rouge pre .clipboard-copy-button,
+  figure.highlight pre .clipboard-copy-button {
+    opacity: 0;
+  }
+
+  div.highlighter-rouge pre:hover .clipboard-copy-button,
+  div.highlighter-rouge pre:focus-within .clipboard-copy-button,
+  figure.highlight pre:hover .clipboard-copy-button {
+    opacity: 1;
+  }
+}
+
 /* ==========================================================================
    글 머리말 메타 (날짜 · 읽는 시간 · 카테고리 · 태그)
    ========================================================================== */
@@ -805,6 +839,7 @@ pre .clipboard-copy-button:focus {
   line-height: 1.8;
   margin-bottom: 1.5em;
   word-break: keep-all;
+  max-width: 62ch;
 }
 
 .hub-topics {
@@ -848,6 +883,10 @@ pre .clipboard-copy-button:focus {
     padding-bottom: 0;
     font-size: 1.18em;
     margin-bottom: 0.5em;
+  }
+
+  p {
+    max-width: 68ch;
   }
 
   .hub-section-desc {
