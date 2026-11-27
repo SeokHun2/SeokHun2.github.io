@@ -20,7 +20,24 @@ $monospace: "JetBrains Mono", "D2Coding", "SFMono-Regular", Menlo, Consolas,
 
 $global-font-family: $sans-serif;
 $header-font-family: $sans-serif;
+
+/* 루트 글자 크기
+   테마 기본값은 화면이 넓을수록 루트를 16px → 23px까지 키웁니다.
+   그대로 두면 1440px PC에서 본문이 23.4px, 글 제목이 45px까지 커져
+   본문 한 줄에 30자 남짓만 들어가고 읽기 불편합니다.
+   기기와 무관하게 17px로 고정하고, 제목 크기는 아래에서 직접 정합니다. */
 $doc-font-size: 17px;
+$doc-font-size-medium: 17px;
+$doc-font-size-large: 17px;
+$doc-font-size-x-large: 17px;
+
+/* 레이아웃 폭
+   넓은 화면에서 본문이 좌측 프로필과 우측 목차 사이에 눌리지 않도록
+   전체 폭을 늘리고, 좌우 사이드 폭은 조금 줄였습니다.
+   → 1360px 이상 화면에서 본문 칼럼 약 766px */
+$max-width: 1360px;
+$right-sidebar-width: 280px;
+$right-sidebar-width-narrow: 208px;
 
 /* 색 */
 $background-color: #ffffff;
@@ -68,6 +85,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* 화면 읽기 프로그램 전용 텍스트.
+   테마에 정의가 없어 "Permalink" 같은 문구가 화면에 남고,
+   모바일에서 가로 스크롤(390px 화면에서 392px)까지 만들던 부분입니다. */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* ==========================================================================
@@ -130,13 +162,23 @@ body {
   }
 }
 
+/* PC에서는 스크롤해도 상단 메뉴·검색을 바로 쓸 수 있게 고정 */
+@media (min-width: 64em) {
+  .masthead {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+}
+
 /* ==========================================================================
    본문 타이포그래피 (한국어 가독성)
    ========================================================================== */
 
 .page__content {
   font-size: 1em;
-  line-height: 1.85;
+  line-height: 1.82;
   color: #24292f;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -144,11 +186,11 @@ body {
   p,
   li,
   dd {
-    line-height: 1.85;
+    line-height: 1.82;
   }
 
   p {
-    margin-bottom: 1.25em;
+    margin-bottom: 1.15em;
   }
 
   h1,
@@ -162,44 +204,60 @@ body {
     padding: 0;
     letter-spacing: -0.015em;
     word-break: keep-all;
+    scroll-margin-top: 5.5em;
   }
 
   h1 {
-    font-size: 1.9em;
+    font-size: 1.7em;
     font-weight: 800;
     margin-top: 0.2em;
     margin-bottom: 0.7em;
   }
 
   h2 {
-    font-size: 1.4em;
+    font-size: 1.45em;
     font-weight: 700;
-    margin-top: 2.4em;
-    margin-bottom: 0.85em;
-    padding-bottom: 0.45em;
+    margin-top: 2.2em;
+    margin-bottom: 0.75em;
+    padding-bottom: 0.4em;
     border-bottom: 1px solid $border-color;
   }
 
   h3 {
-    font-size: 1.15em;
+    font-size: 1.18em;
     font-weight: 700;
-    margin-top: 2em;
-    margin-bottom: 0.6em;
+    margin-top: 1.8em;
+    margin-bottom: 0.55em;
   }
 
   h4 {
     font-size: 1.02em;
     font-weight: 700;
-    margin-top: 1.6em;
+    margin-top: 1.5em;
   }
 
   h2 + h3 {
-    margin-top: 1.2em;
+    margin-top: 1.1em;
+  }
+
+  /* 글 제목과 중복되는 본문 첫 h1은 숨기지만, 그 뒤에 오는 첫 블록의
+     위쪽 여백까지 남아 첫 화면이 비어 보였습니다. */
+  > h1:first-of-type {
+    display: none;
+  }
+
+  > h1:first-of-type + * {
+    margin-top: 0;
+  }
+
+  /* 목차 바로 뒤에 첫 제목이 오는 글은 위 여백을 줄여 첫 화면이 비지 않게 */
+  > .sidebar__right + h2 {
+    margin-top: 0.4em;
   }
 
   ul,
   ol {
-    margin: 0 0 1.25em;
+    margin: 0 0 1.2em;
     padding-left: 1.35em;
   }
 
@@ -238,22 +296,26 @@ body {
   /* 인라인 코드 */
   code {
     font-family: $monospace;
-    font-size: 0.86em;
+    font-size: 0.88em;
     background: $code-background-color;
     color: #0f172a;
     padding: 0.16em 0.42em;
     border-radius: 5px;
     border: 1px solid rgba(15, 23, 42, 0.06);
+    overflow-wrap: break-word;
   }
 
-  /* 코드 블록 */
+  /* 코드 블록: 좌우로 넘치는 코드는 블록 안에서만 스크롤되게 하고
+     페이지 전체 폭이 늘어나지 않도록 감쌉니다. */
   div.highlighter-rouge,
   figure.highlight {
-    margin: 1.6em 0;
+    margin: 1.5em 0;
     border-radius: 12px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 8px 24px -12px rgba(15, 23, 42, 0.28);
     font-size: 0.88em;
-    line-height: 1.7;
+    line-height: 1.65;
+    max-width: 100%;
+    overflow: hidden;
 
     code {
       background: transparent;
@@ -261,19 +323,26 @@ body {
       padding: 0;
       color: inherit;
       font-size: 1em;
+      overflow-wrap: normal;
     }
 
     pre {
-      padding: 1.15em 1.25em;
+      position: relative;
+      padding: 1em 1.15em;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
     }
   }
 
-  /* 표 */
+  /* 표: 모바일에서 표 안에서만 가로 스크롤 */
   table {
     display: block;
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
     margin: 1.6em 0;
     border: 1px solid $border-color;
     border-radius: 10px;
@@ -283,7 +352,7 @@ body {
 
     th,
     td {
-      padding: 0.65em 0.9em;
+      padding: 0.6em 0.85em;
       border: 0;
       border-bottom: 1px solid $border-color;
     }
@@ -306,6 +375,8 @@ body {
 
   /* 이미지 */
   img {
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 28px -18px rgba(15, 23, 42, 0.35);
     margin: 0.5em 0;
@@ -333,34 +404,27 @@ body {
   }
 }
 
-/* 코드 복사 버튼 */
-.clipboard-copy-button {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #e6edf3 !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+/* 코드 복사 버튼 — 아이콘만 있는 버튼이라 배경/여백을 직접 칠하지 않고
+   어두운 코드 위에서 또렷하게 보이는 칩 형태로만 다듬습니다. */
+pre .clipboard-copy-button {
+  background: rgba(255, 255, 255, 0.12) !important;
   border-radius: 6px;
-  padding: 0.25em 0.5em;
-  font-size: 0.72em;
-  opacity: 0.75;
+  opacity: 0.7;
   transition: opacity 0.15s ease, background 0.15s ease;
 }
 
-.clipboard-copy-button:hover {
+pre .clipboard-copy-button:hover,
+pre .clipboard-copy-button:focus {
+  background: rgba(255, 255, 255, 0.24) !important;
   opacity: 1;
-  background: rgba(255, 255, 255, 0.16) !important;
 }
 
 /* ==========================================================================
    글 머리말 메타 (날짜 · 읽는 시간 · 카테고리 · 태그)
    ========================================================================== */
 
-/* 글 본문 첫 h1은 제목과 중복되므로 숨김 (본문 내용은 그대로 보존) */
-.page__content > h1:first-of-type {
-  display: none;
-}
-
 .page__title {
-  font-size: 1.95em;
+  font-size: 2em;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -431,7 +495,7 @@ body {
 .list__item,
 .grid__item {
   .archive__item {
-    padding: 1.5em 0;
+    padding: 1.3em 0;
     border-bottom: 1px solid $border-color;
     transition: none;
   }
@@ -441,9 +505,10 @@ body {
   }
 
   .archive__item-title {
-    font-size: 1.12em;
+    font-size: 1.08em;
     font-weight: 700;
     letter-spacing: -0.015em;
+    line-height: 1.45;
     margin: 0 0 0.35em;
     border: 0;
     color: #0d1117;
@@ -459,11 +524,15 @@ body {
     }
   }
 
+  .page__meta {
+    margin-bottom: 0.35em;
+  }
+
   .archive__item-excerpt {
     font-size: 0.92em;
     color: $muted-text-color;
     line-height: 1.7;
-    margin: 0.5em 0 0;
+    margin: 0.45em 0 0;
     word-break: keep-all;
   }
 }
@@ -472,7 +541,7 @@ body {
 .grid__item .archive__item {
   border: 1px solid $border-color;
   border-radius: 14px;
-  padding: 1.3em;
+  padding: 1.25em;
   height: 100%;
   background: #fff;
   transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
@@ -563,31 +632,18 @@ body {
   margin-bottom: 2.2em;
 }
 
-.taxonomy__index {
-  a {
-    border-bottom: 1px solid $border-color;
-    padding: 0.6em 0;
-
-    &:hover {
-      color: $primary-color;
-    }
-  }
-
-  .taxonomy__count {
-    color: $muted-text-color;
-  }
-}
-
 /* ==========================================================================
    사이드바 · 목차
    ========================================================================== */
 
 .sidebar {
   .author__avatar img {
-    width: 110px;
-    height: 110px;
+    width: 104px;
+    height: 104px;
     object-fit: cover;
     border: 1px solid $border-color;
+    border-radius: 50%;
+    background: #f3f5f8;
   }
 
   .author__name {
@@ -625,35 +681,76 @@ body {
   }
 }
 
-/* 오른쪽 고정 목차 */
+/* 목차 접기 버튼 — 모바일에서만 보입니다. */
+.toc__toggle {
+  display: none;
+  width: 100%;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.7em 0.95em;
+  background: #fbfcfd;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  color: #24292f;
+  font-size: 0.95em;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  .toc__caret {
+    margin-inline-start: auto;
+    font-size: 0.8em;
+    color: $muted-text-color;
+    transition: transform 0.2s ease;
+  }
+
+  &[aria-expanded="true"] .toc__caret {
+    transform: rotate(180deg);
+  }
+}
+
+/* 우측 고정 목차 */
 .toc {
   background: #fbfcfd;
   border: 1px solid $border-color;
   border-radius: 12px;
-  padding: 1em 1.15em;
-  font-size: 0.85em;
+  padding: 0.9em 1em;
+  font-size: 0.82em;
+  line-height: 1.5;
   box-shadow: none;
   max-height: calc(100vh - 7em);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d7dbe0;
+    border-radius: 999px;
+  }
 
   header .nav__title {
     background: transparent;
     color: #0d1117;
-    margin: 0 0 0.5em;
-    padding: 0 0 0.55em;
+    margin: 0 0 0.45em;
+    padding: 0 0 0.5em;
     border-bottom: 1px solid $border-color;
-    font-size: 0.92em;
+    font-size: 0.95em;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     text-transform: none;
   }
 
   .toc__title {
-    font-size: 0.9em;
+    font-size: 0.95em;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     color: #0d1117;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.55em;
     text-transform: none;
   }
 
@@ -665,24 +762,37 @@ body {
 
     ul {
       margin: 0;
-      padding-left: 0.85em;
+      padding-left: 0.6em;
       border-left: 1px solid $border-color;
     }
 
+    li {
+      margin: 0;
+    }
+
     a {
+      display: block;
       color: $muted-text-color;
       border: 0;
-      padding: 0.25em 0;
-      line-height: 1.5;
+      padding: 0.22em 0;
+      line-height: 1.45;
+      word-break: keep-all;
     }
 
     a:hover,
-    a.active {
+    a.active,
+    .active > a {
       color: $primary-color;
       background: transparent;
-      border-left-color: $primary-color;
     }
   }
+}
+
+/* 테마는 목차 메뉴(.toc__menu)에 스크롤을 한 번 더 걸어 스크롤바가 두 겹으로
+   보입니다. 스크롤은 .toc 하나에만 둡니다. */
+.sidebar__right.sticky .toc .toc__menu {
+  max-height: none;
+  overflow: visible;
 }
 
 /* ==========================================================================
@@ -690,10 +800,10 @@ body {
    ========================================================================== */
 
 .hub-lead {
-  font-size: 1.05em;
+  font-size: 1.02em;
   color: #3d444d;
   line-height: 1.8;
-  margin-bottom: 1.6em;
+  margin-bottom: 1.5em;
   word-break: keep-all;
 }
 
@@ -731,7 +841,7 @@ body {
 }
 
 .hub-section {
-  margin-top: 2.6em;
+  margin-top: 2.4em;
 
   h2 {
     border-bottom: 0;
@@ -840,38 +950,131 @@ body {
    반응형
    ========================================================================== */
 
+/* 태블릿 */
+@media (max-width: 63.9375em) {
+  .page__title {
+    font-size: 1.8em;
+  }
+
+  /* 목차: 화면이 좌우 2단으로 갈라지기 전까지는 모두 접어 둡니다.
+     그대로 두면 31개 항목이 본문 위를 다 채워 글에 닿기까지 한참 스크롤해야 합니다. */
+  .toc__toggle {
+    display: flex;
+  }
+
+  .toc {
+    display: none;
+    margin-top: 0.5em;
+    max-height: none;
+    overflow: visible;
+
+    &.is-open {
+      display: block;
+    }
+  }
+}
+
+/* 모바일 */
 @media (max-width: 48em) {
   .page__content {
-    font-size: 0.98em;
-    line-height: 1.8;
+    font-size: 1em;
+    line-height: 1.78;
 
     h1 {
-      font-size: 1.6em;
+      font-size: 1.45em;
     }
 
     h2 {
       font-size: 1.28em;
-      margin-top: 2em;
+      margin-top: 1.9em;
     }
 
     h3 {
-      font-size: 1.1em;
+      font-size: 1.12em;
+      margin-top: 1.6em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      scroll-margin-top: 1.5em;
     }
 
     div.highlighter-rouge,
     figure.highlight {
       border-radius: 10px;
-      font-size: 0.84em;
-      margin-left: -0.2em;
-      margin-right: -0.2em;
+      font-size: 0.85em;
+      margin-left: 0;
+      margin-right: 0;
     }
+  }
+
+  .page__title {
+    font-size: 1.55em;
+    line-height: 1.38;
+  }
+
+  .breadcrumbs {
+    font-size: 0.78em;
+    line-height: 1.5;
+  }
+
+  /* 작성자 정보: 큰 아바타와 소셜 링크를 세로로 쌓으면 글 제목이 화면 아래로
+     밀리므로, 아바타를 작게 줄이고 소셜 링크/팔로우 버튼은 숨깁니다. */
+  .sidebar {
+    margin-bottom: 0;
+
+    .author__avatar img {
+      width: 52px;
+      height: 52px;
+    }
+
+    .author__name {
+      font-size: 1em;
+      margin: 0 0 0.15em;
+    }
+
+    .author__bio {
+      font-size: 0.82em;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .author__urls-wrapper {
+      display: none;
+    }
+  }
+
+  /* 목차 영역: 모바일에서는 본문 위에 놓입니다. */
+  .sidebar__right {
+    position: static;
+    width: auto;
+    margin: 0 0 1.35em;
+    padding: 0;
+
+    &.sticky {
+      position: static;
+    }
+  }
+
+  .toc {
+    font-size: 0.92em;
   }
 
   .masthead .site-subtitle {
     display: none;
   }
 
-  .toc {
-    font-size: 0.82em;
+  .masthead__inner-wrap {
+    padding: 0.7em 1em;
+  }
+
+  .list__item .archive__item {
+    padding: 1.15em 0;
+  }
+
+  .archive__item-title {
+    font-size: 1.04em;
   }
 }

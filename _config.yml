@@ -103,7 +103,7 @@ analytics:
 # 작성자 정보
 author:
   name             : "Seok Hun"
-  avatar           : "/images/profileScene.jpg"
+  avatar           : "/images/avatar.jpg"
   bio              : "QA · 네트워크 엔지니어링을 기록합니다"
   links:
     - label: "GitHub"

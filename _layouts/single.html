@@ -41,9 +41,16 @@ layout: default
 
       <section class="page__content" itemprop="text">
         {% if page.toc %}
+          {% assign toc_label = page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "목차" %}
           <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
+            <!-- 모바일: 목차를 접어 두고 이 버튼으로 펼칩니다 (PC에서는 숨김) -->
+            <button class="toc__toggle" type="button" aria-expanded="false" aria-controls="toc-list">
+              <i class="fas fa-list-ul" aria-hidden="true"></i>
+              <span>{{ toc_label }}</span>
+              <i class="fas fa-chevron-down toc__caret" aria-hidden="true"></i>
+            </button>
+            <nav class="toc" id="toc-list" aria-label="{{ toc_label }}">
+              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}" aria-hidden="true"></i> {{ toc_label }}</h4></header>
               {% include toc.html sanitize=true html=content h_min=2 h_max=4 class="toc__menu" skip_no_ids=true %}
             </nav>
           </aside>

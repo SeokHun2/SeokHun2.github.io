@@ -26,3 +26,36 @@
     <script src="{{ script | relative_url }}"></script>
   {% endfor %}
 {% endif %}
+
+<script>
+  /* 모바일 목차 접기/펼치기 */
+  (function () {
+    var btn = document.querySelector('.toc__toggle');
+    var toc = document.getElementById('toc-list');
+    if (!btn || !toc) return;
+
+    btn.addEventListener('click', function () {
+      var open = toc.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    /* 목차에서 항목을 고르면 접어서 본문이 바로 보이게 */
+    toc.addEventListener('click', function (e) {
+      if (e.target.closest('a') && window.matchMedia('(max-width: 63.9375em)').matches) {
+        toc.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    /* 화면이 넓어지면(PC) 접힘 상태가 남지 않도록 정리 */
+    var mq = window.matchMedia('(min-width: 64em)');
+    var sync = function () {
+      if (mq.matches) {
+        toc.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    };
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else if (mq.addListener) mq.addListener(sync);
+  })();
+</script>
